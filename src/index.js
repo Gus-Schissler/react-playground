@@ -141,7 +141,7 @@ class Game extends React.Component {
 		function GameContainer() {
 			const classes = style();
 
-			return <div className={classes.root}>this is my game continer</div>;
+			return <div className={classes.root}>this is my game container</div>;
 		}
 
 		return (

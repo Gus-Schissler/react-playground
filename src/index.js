@@ -6,18 +6,9 @@ import Square from './square';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import Divider from '@material-ui/core/Divider'
+import PropTypes from 'prop-types';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider, makeStyles } from '@material-ui/styles';
-
-const style = makeStyles(theme => ({
-	root: {
-		display: 'flex',
-		'flex-direction': 'column',
-		'align-items': 'center',
-		'justify-content': 'center',
-		'background-color': 'red',
-	},
-}));
+import { ThemeProvider, makeStyles, withTheme } from '@material-ui/styles';
 
 const gusTheme = createMuiTheme({
 	palette: {
@@ -39,6 +30,26 @@ const gusTheme = createMuiTheme({
 		useNextVariants: true,
 	},
 });
+
+const styledTheme = makeStyles(theme => ({
+	root: {
+		display: 'flex',
+		'flex-direction': 'column',
+		'align-items': 'center',
+		'justify-content': 'center',
+		'background-color': 'red',
+	},
+}));
+
+function GameContainerRaw(props){
+	return <div>{`${props.theme.root}`}</div>
+}
+
+GameContainerRaw.propTypes = {
+  theme: PropTypes.object.isRequired,
+};
+
+const GameContainer = withTheme()(GameContainerRaw);
 
 class Board extends React.Component {
 	renderSquare(i) {
@@ -138,14 +149,8 @@ class Game extends React.Component {
 			status = "Next player: " + (this.state.xIsNext ? "X" : "O");
 		}
 
-		function GameContainer() {
-			const classes = style();
-
-			return <div className={classes.root}>this is my game container</div>;
-		}
-
 		return (
-			<ThemeProvider theme={{ 'margin-top': '8px' }}>
+			<ThemeProvider theme={styledTheme}>
 				<GameContainer>
 					<Card raised={true} elevation={3}>
 						<div className="game-board">

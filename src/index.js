@@ -3,30 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './sass/index.scss';
 import MyComponent from './square';
+import Square from './square';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import Divider from '@material-ui/core/Divider'
 import {MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
-// const styles = {
-//   square: {
-//     background: '#f2f4f5',
-//     border: '1px solid #0a0a0a',
-//     color: '$primary-color',
-//     'font-family': '$font-stack',
-//     float: 'left',
-//     'font-size': '2 * $base-font',
-//     'line-height': '34px',
-//     height: 'box-pow(6)',
-//     'margin-right': '-1px',
-//     'margin-top': '-1px',
-//     padding:' 0',
-//     'text-align': 'center',
-//     width: 'box-pow(6)',
-//   },
-// };
 
 const theme = createMuiTheme({
   palette: {
@@ -49,24 +32,13 @@ const theme = createMuiTheme({
   },
 });
 
-// class Square extends React.Component {
-//   render() {
-//     return (<button className={this.props.classes.square} onClick={props.onClick}>
+// function Square(props) {
+//     return (
+//       <button className="square" onClick={props.onClick}>
 //         {props.value}
-//     </button>
+//       </button>
 //     );
-//   }
 // }
-
-function Square(props) {
-    return (
-      <button className="square" onClick={props.onClick}>
-        {props.value}
-      </button>
-    );
-}
-
-// export default withStyles(styles)(Square);
 
 class Board extends React.Component {
   renderSquare(i) {
@@ -184,7 +156,6 @@ class Game extends React.Component {
           <ul>{moves}</ul>
         </div>
         </Card>
-        <MyComponent />
       </div>
     );
   }

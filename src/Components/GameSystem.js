@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { Typography, Grid, Paper } from '@material-ui/core';
+import { Typography, Grid, Paper, CssBaseline } from '@material-ui/core';
 
 const theme = createMuiTheme({
   palette: {
@@ -158,7 +158,7 @@ class Game extends React.Component {
     }
 
     return (
-      <Fragment>
+      <CssBaseline>
         <Grid container sm={12} spacing={16}>
           <Grid item sm>
             <Paper style={styles.Paper}>
@@ -171,14 +171,14 @@ class Game extends React.Component {
           <Grid item sm>
             <Paper style={styles.Paper}>
               <Grid container spacing={16}>
-                  <Typography variant="h5">Movement Panel</Typography>
-                  <Typography variant="body1">{status}</Typography>
+                  <Typography variant='h5'>Movement Panel</Typography>
+                  <Grid item sm={6}><Typography variant='body1' align='center'>{status}</Typography></Grid>
                 <Grid container spacing={8}>{moves}</Grid>
               </Grid>
             </Paper>
           </Grid>
         </Grid>
-      </Fragment>
+      </CssBaseline>
     );
   }
 }
